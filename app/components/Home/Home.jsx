@@ -1,15 +1,14 @@
 import React from 'react';
-import Link from 'react-toolbox/lib/link';
 import Nav from '../Nav/Nav';
-import Posts from '../PostApp/Posts';
+import Footer from '../Footer/Footer';
 // import style from '.'
 
 const Home = () =>
   (
     <div>
       <Nav />
-      <Posts
-      />
+      <h1>Este es el Home</h1>
+      <Footer />
     </div>
   );
 

@@ -3,21 +3,21 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
 } from 'react-router-dom';
-import Nav from './Nav/Nav';
-import About from './About/About';
 import Home from './Home/Home';
-import Post from './PostApp/Posts';
+import Product from './ProductApp/Products';
+import Order from './OrderApp/Orders';
+import Contact from './Contact/Contact';
 import PageNotFound from './PageNotFound/PageNotFound';
 
 const App = () => (
   <Router>
     <Switch>
       <Route path='/' exact component={Home} />
-      <Route path='/about/' exact component={About} />
-      <Route path='/posts' exact component={Post} />
-      <Route component={PageNotFound}/>
+      <Route path='/products/' exact component={Product} />
+      <Route path='/orders/' exact component={Order} />
+      <Route path='/contact/' exact component={Contact} />
+      <Route component={PageNotFound} />
     </Switch>
   </Router>
 );
