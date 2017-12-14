@@ -8,7 +8,7 @@ const PageNotFound = () =>
       <h3>
         404 - Not found!
       </h3>
-      <Link to='/'>Return to home</Link>
+      <Link to='/'>Return to home </Link>
     </div>
   );
 
