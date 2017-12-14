@@ -1,4 +1,4 @@
-# react-blog
+# react-restaurant
 
 Clone this repo and run
 
