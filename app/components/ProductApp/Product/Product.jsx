@@ -34,7 +34,7 @@ class Product extends Component{
     return(
       <Card style={{width: '600px'}}>
         <CardTitle
-          title={product.get('Name')}
+          title={product.get('name')}
           subtitle={product.get('cost')}
         />
         <div>
