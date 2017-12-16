@@ -12,7 +12,7 @@ class Products extends Component{
   static propTypes = {
     fetchProducts: PropTypes.func.isRequired,
     productsData: ImmutablePropTypes.map.isRequired,
-    //deleteProduct: PropTypes.func.isRequired,
+    deleteProduct: PropTypes.func.isRequired,
   };
 state = {
   showForm: false,
@@ -34,7 +34,7 @@ componentWillReceiveProps(nextProps) {
 }
 
 handleDeleteProduct = (id) =>{
-  //console.log(`borrar ${id}`);
+  console.log(`borrar ${id}`);
   const { deleteProduct } = this.props;
   //deletePost(post.toJS());
   deleteProduct(id);
@@ -46,11 +46,13 @@ createProduct = (product) => {
 };
 
 handleEditProduct = (product) => {
+  console.log('editProduct');
   const {editProduct} = this.props;
   this.setState({ showFrom: false}, () => editProduct(product.toJS()))
 }
 
 handleEditProductForm = (id, product) => {
+  console.log('editProductForm');
   this.setState({
     showForm: true,
     productToEdit: product
@@ -65,7 +67,7 @@ handleCloseForm = () => {
 };
 
 render() {
-//  console.log(this.props.productsData.get('products'));
+  //console.log(this.props.productsData.get('products'));
   const products = this.props.productsData.get('products');
   const productItems = products.map(
     product => (
@@ -74,7 +76,7 @@ render() {
         id={product.get('_id')}
         product={product}
         editProduct={this.handleEditProductForm}
-        deletePost={this.handleDeleteProduct}
+        deleteProduct={this.handleDeleteProduct}
       />
     )
   ).toJS();
@@ -84,7 +86,7 @@ render() {
       <ProductForm
         active={this.state.showForm}
         createProduct={this.createProduct}
-        editPost={this.handleEditPost}
+        editPost={this.handleEditProduct}
         closeForm={this.handleCloseForm}
         post={this.state.productToEdit}
       />

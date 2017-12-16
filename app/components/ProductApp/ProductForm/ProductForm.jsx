@@ -70,7 +70,8 @@ class ProductForm extends Component{
             active={active}
             onEscKeyDown={this.handleClose}
             onOverlayClick={this.handleClose}
-            title='Create Product'
+            title = {isNil(product) ? "Create Product" : "Edit Product"}
+            //title='Create Product'
           >
             <Input
               label="Name"

@@ -35,8 +35,8 @@ export function createProduct(post) {
   };
 }
 
-export function editProducts( product ) {
-  //console.log(`Post recibido ${post}`, post);
+export function editProduct( product ) {
+  //console.log(`Post recibido ${product}`, post);
   return (dispatch) => {
     dispatch(toggleProductsLoading());
     //console.log(`${endpoints.posts}${post.id}`);
