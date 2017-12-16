@@ -27,7 +27,7 @@ componentWillReceiveProps(nextProps) {
   const { fetchProducts } = this.props;
   const { productsData } = nextProps;
   //console.log(postsData.get('postsLoading'), postsData.get('refresh'));
-  if (!productsData.get('postsLoading') && productsData.get('refresh')) {
+  if (!productsData.get('productLoading') && productsData.get('refresh')) {
   //  console.log('¡Entró!');
     fetchProducts();
   }
@@ -65,7 +65,7 @@ handleCloseForm = () => {
 };
 
 render() {
-  console.log(this.props.productsData.get('products'));
+//  console.log(this.props.productsData.get('products'));
   const products = this.props.productsData.get('products');
   const productItems = products.map(
     product => (
@@ -90,7 +90,7 @@ render() {
       />
       <Button
         icon="add"
-        label="Create product "
+        label="Create Product "
         onClick={this.handleShowForm}
       />
     </div>

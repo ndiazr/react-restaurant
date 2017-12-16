@@ -1,8 +1,8 @@
-const url = 'my-endpoint-url';
+const url = 'http://localhost:3000';
 
 const endpoints = {
-  // posts: `${url}/posts`,
-  // post: `${url}/post/`,
+   posts: `${url}/posts`,
+   post: `${url}/post/`,
 };
 
 export default endpoints;

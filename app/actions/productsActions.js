@@ -3,22 +3,22 @@ import { endpoints } from '../constants';
 
 export const receiveProducts = (posts) => (
   {
-    type: 'RECEIVE_POSTS',
+    type: 'RECEIVE_PRODUCTS',
     posts,
   }
 );
 
 export const refreshProducts = () => (
   {
-    type: 'REFRESH_POSTS',
+    type: 'REFRESH_PRODUCTS',
   }
 );
 
 export const toggleProductsLoading = () => ({
-  type: 'TOGGLE_POSTS_LOADING',
+  type: 'TOGGLE_PRODUCTS_LOADING',
 });
 
-export function createProduct (post) {
+export function createProduct(post) {
   //console.log(post);
   return (dispatch) => {
     dispatch(toggleProductsLoading());
@@ -35,15 +35,15 @@ export function createProduct (post) {
   };
 }
 
-export function editProducts( Product ) {
+export function editProducts( product ) {
   //console.log(`Post recibido ${post}`, post);
   return (dispatch) => {
     dispatch(toggleProductsLoading());
     //console.log(`${endpoints.posts}${post.id}`);
-    return fetch(`${endpoints.Products}/${Product.id}`, {
+    return fetch(`${endpoints.Posts}/${product.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(assign({}, Product)),
+      body: JSON.stringify(assign({}, product)),
     })
     .then(response => {
       dispatch(toggleProductsLoading())
@@ -57,15 +57,15 @@ export function editProducts( Product ) {
 export function deleteProduct (id){
   console.log('actions');
   return (dispatch) => {
-    dispatch(toggleProductsLoading());
+    dispatch(togglePostsLoading());
   //  console.log(`${endpoints.posts}/${id}`);
     return fetch(`${endpoints.posts}/${id}`,{
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' }
     })
     .then( response => {
-      dispatch(toggleProductsLoading())
-      dispatch(refreshProducts())
+      dispatch(togglePostsLoading())
+      dispatch(refreshPosts())
     })
   }
 }
