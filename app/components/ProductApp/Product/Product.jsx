@@ -39,7 +39,7 @@ class Product extends Component{
         />
         <div>
           {   this.state.showDetail ?
-            <CardText>{product.get('sellCost')}</CardText>
+            <CardText>{product.get('detail')}</CardText>
             : null
           }
 

@@ -16,7 +16,7 @@ class ProductForm extends Component{
   static productState = () => fromJS({
     name: '',
     cost: '',
-    sellCost: '',
+    detail: '',
   });
 
   state = {
@@ -31,7 +31,7 @@ class ProductForm extends Component{
     this.setState({productState});
   }
   onSellCostChange = (value) =>{
-    const productState = this.state.productState.set('sellCost',value);
+    const productState = this.state.productState.set('detail',value);
     this.setState({productState});
   }
 
@@ -45,7 +45,7 @@ class ProductForm extends Component{
     const { createProduct } = this.props;
     // const post = Object.assign({}, this.state, { date: Date() });
     const product = this.state.productState;
-    // console.log(post);
+    console.log(product);
     this.setState({ productState: ProductForm.productState() }, () => createProduct(product));
     // createPost(post);
   };
@@ -78,14 +78,16 @@ class ProductForm extends Component{
               value={this.state.productState.get('name')}
             />
             <Input
+              type = 'number'
               label="Cost"
               onChange={this.onCostChange}
               value={this.state.productState.get('cost')}
             />
             <Input
-              label="sell Cost"
+              type = 'text'
+              label="Detail"
               onChange={this.onSellCostChange}
-              value={this.state.productState.get('cost')}
+              value={this.state.productState.get('detail')}
             />
           </Dialog>
 
