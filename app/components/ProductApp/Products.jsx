@@ -4,33 +4,34 @@ import { findIndex, set } from 'lodash/fp';
 import { fromJS, List } from 'immutable';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import Post from './Post/Post';
-import PostForm from './PostForm/PostForm';
-//import { endpoints } from '../../constants';
+import Product from './Product/Product';
+import ProductForm from './ProductForm/ProductForm';
+import { endpoints } from '../../constants';
 
 class Products extends Component{
   static propTypes = {
     fetchProducts: PropTypes.func.isRequired,
-    productDate: ImmutablePropTypes.map.isRequired,
-    deleteProduct: PropTypes.func.isRequired,
+    productsData: ImmutablePropTypes.map.isRequired,
+    //deleteProduct: PropTypes.func.isRequired,
   };
 state = {
   showForm: false,
 };
-// componentDidMount() {
-//   const { fetchPosts } = this.props;
-//   fetchPosts();
-// }
 
-// componentWillReceiveProps(nextProps) {
-//   const { fetchPosts } = this.props;
-//   const { postsData } = nextProps;
-//   //console.log(postsData.get('postsLoading'), postsData.get('refresh'));
-//   if (!postsData.get('postsLoading') && postsData.get('refresh')) {
-//   //  console.log('¡Entró!');
-//     fetchPosts();
-//   }
-// }
+ componentDidMount() {
+   const { fetchProducts } = this.props;
+   fetchProducts();
+}
+
+componentWillReceiveProps(nextProps) {
+  const { fetchProducts } = this.props;
+  const { productsData } = nextProps;
+  //console.log(postsData.get('postsLoading'), postsData.get('refresh'));
+  if (!productsData.get('postsLoading') && productsData.get('refresh')) {
+  //  console.log('¡Entró!');
+    fetchProducts();
+  }
+}
 
 handleDeleteProduct = (id) =>{
   //console.log(`borrar ${id}`);
@@ -39,12 +40,61 @@ handleDeleteProduct = (id) =>{
   deleteProduct(id);
 }
 
-createPost = (product) => {
+createProduct = (product) => {
   const { createProduct } = this.props;
   this.setState({ showForm: false }, () => createProduct(product.toJS()));
 };
 
-
-
-
+handleEditProduct = (product) => {
+  const {editProduct} = this.props;
+  this.setState({ showFrom: false}, () => editProduct(product.toJS()))
 }
+
+handleEditProductForm = (id, product) => {
+  this.setState({
+    showForm: true,
+    productToEdit: product
+      .set('id', id)
+  });
+};
+handleShowForm = () => {
+  this.setState({ showForm: true });
+};
+handleCloseForm = () => {
+  this.setState({ showForm: false, postToEdit: undefined });
+};
+
+render() {
+  console.log(this.props.productsData.get('products'));
+  const products = this.props.productsData.get('products');
+  const productItems = products.map(
+    product => (
+      <Product
+        key={product.get('_id')}
+        id={product.get('_id')}
+        product={product}
+        editProduct={this.handleEditProductForm}
+        deletePost={this.handleDeleteProduct}
+      />
+    )
+  ).toJS();
+  return (
+    <div>
+      {productItems}
+      <ProductForm
+        active={this.state.showForm}
+        createProduct={this.createProduct}
+        editPost={this.handleEditPost}
+        closeForm={this.handleCloseForm}
+        post={this.state.productToEdit}
+      />
+      <Button
+        icon="add"
+        label="Create product "
+        onClick={this.handleShowForm}
+      />
+    </div>
+  );
+}
+}
+export default Products;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-toolbox/lib/button';
-import { Card, CardTitle, CardText, CardActions } from 'react-toolbox/lib/card';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 
 import {
@@ -63,4 +63,4 @@ class Product extends Component{
     )
   }
 }
-export default Post;
+export default Product;

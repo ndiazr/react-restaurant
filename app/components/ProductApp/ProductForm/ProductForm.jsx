@@ -6,7 +6,7 @@ import { isNil } from 'lodash/fp';
 import Input from 'react-toolbox/lib/input';
 import Dialog from 'react-toolbox/lib/dialog';
 
-class ProductFrom extends Component{
+class ProductForm extends Component{
   static propTypes = {
     product: ImmutablePropTypes.map,
     createProduct: PropTypes.func.isRequired,
@@ -19,34 +19,34 @@ class ProductFrom extends Component{
     sellCost: '',
   });
 
-  productState = {
-    productState: ProductFrom.productState(),
+  state = {
+    productState: ProductForm.productState(),
   };
   onNameChange = (value) =>{
-    const productState = this.state.productState.set('name',values);
-    setState({productState});
+    const productState = this.state.productState.set('name',value);
+    this.setState({productState});
   }
   onCostChange = (value) =>{
-    const productState = this.state.productState.set('cost',values);
-    setState({productState});
+    const productState = this.state.productState.set('cost',value);
+    this.setState({productState});
   }
   onSellCostChange = (value) =>{
-    const productState = this.state.productState.set('sellCost',values);
-    setState({productState});
+    const productState = this.state.productState.set('sellCost',value);
+    this.setState({productState});
   }
 
   componentWillReceiveProps(nextProps) {
-    const { post } = nextProps;
+    const { product } = nextProps;
     //console.log(post);
-    this.setState({ productState: post  || ProductForm.postState()});
+    this.setState({ productState: product  || ProductForm.productState()});
     // this.setState({ postState: nextProps.post || PostForm.postState() }),
   }
   handleCreateProduct = () => {
     const { createProduct } = this.props;
     // const post = Object.assign({}, this.state, { date: Date() });
-    const post = this.state.productState;
+    const product = this.state.productState;
     // console.log(post);
-    this.setState({ productState: ProductForm.productState() }, () => createProduct(post));
+    this.setState({ productState: ProductForm.productState() }, () => createProduct(product));
     // createPost(post);
   };
   handleClose = () => {
