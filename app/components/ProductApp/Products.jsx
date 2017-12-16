@@ -12,7 +12,7 @@ class Products extends Component{
   static propTypes = {
     fetchProducts: PropTypes.func.isRequired,
     productsData: ImmutablePropTypes.map.isRequired,
-    deleteProduct: PropTypes.func.isRequired,
+    //deleteProduct: PropTypes.func.isRequired,
   };
 state = {
   showForm: false,

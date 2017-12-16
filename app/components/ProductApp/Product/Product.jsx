@@ -20,7 +20,7 @@ class Product extends Component{
   }
   state = {
     showDetail: false,
-    buttonIcon: "visibility_off",
+    buttonIcon: "visibility",
   }
   handleToggleDetail = () =>{
     this.setState({
@@ -39,7 +39,15 @@ class Product extends Component{
         />
         <div>
           {   this.state.showDetail ?
-            <CardText>{product.get('detail')}</CardText>
+            // <CardText>{product.get('detail')}</CardText>
+            <Card>
+              <CardTitle
+                title="Detalle"
+              />
+              <CardText>
+                {product.get('detail')}
+              </CardText>
+            </Card>
             : null
           }
 

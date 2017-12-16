@@ -60,7 +60,7 @@ class ProductForm extends Component{
         { label: "Cancel", onClick: this.handleClose },
         {
           label: isNil(product) ? "Create" : "Update",
-          onClick: isNil(product) ? this.handleCreateProduct : null// : this.handleEditPost,
+          onClick: isNil(product) ? this.handleCreateProduct : this.handleEditProduct,
         }
       ];
       return (
