@@ -18,10 +18,10 @@ export const toggleProductsLoading = () => ({
   type: 'TOGGLE_POSTS_LOADING',
 });
 
-export function createProducts(post) {
+export function createProduct (post) {
   //console.log(post);
   return (dispatch) => {
-    dispatch(togglePostsLoading());
+    dispatch(toggleProductsLoading());
     return fetch('http://localhost:3000/posts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -54,7 +54,7 @@ export function editProducts( Product ) {
 }
 
 
-export function deleteProducts (id){
+export function deleteProduct (id){
   console.log('actions');
   return (dispatch) => {
     dispatch(togglePostsLoading());
@@ -69,6 +69,8 @@ export function deleteProducts (id){
     })
   }
 }
+
+
 
 export function fetchProducts() {
   return (dispatch) => {
