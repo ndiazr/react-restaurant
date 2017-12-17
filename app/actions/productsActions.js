@@ -57,15 +57,15 @@ export function editProduct( product ) {
 export function deleteProduct (id){
   console.log('actions');
   return (dispatch) => {
-    dispatch(togglePostsLoading());
+    dispatch(toggleProductsLoading());
   //  console.log(`${endpoints.posts}/${id}`);
     return fetch(`${endpoints.posts}/${id}`,{
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' }
     })
     .then( response => {
-      dispatch(togglePostsLoading())
-      dispatch(refreshPosts())
+      dispatch(toggleProductsLoading())
+      dispatch(refreshProducts())
     })
   }
 }
