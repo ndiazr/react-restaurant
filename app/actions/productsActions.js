@@ -36,11 +36,11 @@ export function createProduct(post) {
 }
 
 export function editProduct( product ) {
-  //console.log(`Post recibido ${product}`, post);
+  console.log(`Product recibido ${product}`);
   return (dispatch) => {
     dispatch(toggleProductsLoading());
     //console.log(`${endpoints.posts}${post.id}`);
-    return fetch(`${endpoints.Posts}/${product.id}`, {
+    return fetch(`${endpoints.posts}/${product.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(assign({}, product)),

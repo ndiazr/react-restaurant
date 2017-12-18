@@ -16,6 +16,7 @@ class Products extends Component{
   };
 state = {
   showForm: false,
+  productToEdit: undefined,
 };
 
  componentDidMount() {
@@ -46,17 +47,18 @@ createProduct = (product) => {
 };
 
 handleEditProduct = (product) => {
-  console.log('editProduct');
+  //console.log('editProduct');
   const {editProduct} = this.props;
   this.setState({ showFrom: false}, () => editProduct(product.toJS()))
 }
 
 handleEditProductForm = (id, product) => {
-  console.log('editProductForm');
+  console.log('editProductForm '+ product);
   this.setState({
     showForm: true,
     productToEdit: product
       .set('id', id)
+      .set('updated_at'),
   });
 };
 handleShowForm = () => {
@@ -86,9 +88,9 @@ render() {
       <ProductForm
         active={this.state.showForm}
         createProduct={this.createProduct}
-        editPost={this.handleEditProduct}
+        editProduct={this.handleEditProduct}
         closeForm={this.handleCloseForm}
-        post={this.state.productToEdit}
+        product={this.state.productToEdit}
       />
       <Button
         icon="add"

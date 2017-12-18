@@ -7,6 +7,7 @@ import {
   Card,
   CardTitle,
   CardText,
+  CardMedia,
   CardActions,
 } from 'react-toolbox/lib/card';
 
@@ -36,6 +37,10 @@ class Product extends Component{
         <CardTitle
           title={product.get('name')}
           subtitle={product.get('cost')}
+        />
+        <CardMedia
+          aspectRatio="wide"
+          image="https://image.flaticon.com/icons/png/512/424/424746.png"
         />
         <div>
           {   this.state.showDetail ?

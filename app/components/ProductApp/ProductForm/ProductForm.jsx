@@ -49,6 +49,21 @@ class ProductForm extends Component{
     this.setState({ productState: ProductForm.productState() }, () => createProduct(product));
     // createPost(post);
   };
+  handleEditProduct = () => {
+    console.log(`Entramos a handleEditProduct`);
+    const { editProduct } = this.props;
+    const { productState } = this.state;
+    //console.log(this.state.postState);
+    this.setState(
+      {
+          productState: ProductForm.productState(),
+      },
+      () => editProduct(productState),
+    );
+  };
+
+
+
   handleClose = () => {
     const { closeForm } = this.props;
     this.setState({ productState: ProductForm.productState()});

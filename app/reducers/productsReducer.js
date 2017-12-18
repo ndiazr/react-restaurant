@@ -13,7 +13,7 @@ export default function productsData(state = initialState, action) {
   switch (action.type) {
     case ACTION_TYPES.RECEIVE_PRODUCTS: {
       //console.log(action.posts);
-      console.log(action.products);
+      //console.log(action.products);
       const totalResults = action.posts.length;
       const posts = fromJS(action.posts).sort(p => p._id);
       return state.withMutations(map => {
