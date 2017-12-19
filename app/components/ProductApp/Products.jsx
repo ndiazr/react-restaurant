@@ -43,13 +43,15 @@ handleDeleteProduct = (id) =>{
 
 createProduct = (product) => {
   const { createProduct } = this.props;
-  this.setState({ showForm: false }, () => createProduct(product.toJS()));
+  this.setState({ showForm: false },
+    () => createProduct(product.toJS()));
 };
 
 handleEditProduct = (product) => {
   //console.log('editProduct');
   const {editProduct} = this.props;
-  this.setState({ showFrom: false}, () => editProduct(product.toJS()))
+  this.setState({ showForm: false , product: undefined},
+    () => editProduct(product.toJS()))
 }
 
 handleEditProductForm = (id, product) => {
@@ -57,15 +59,16 @@ handleEditProductForm = (id, product) => {
   this.setState({
     showForm: true,
     productToEdit: product
-      .set('id', id)
-      .set('updated_at'),
+      .set('id', id),
+    //  .set('updated_at'),
   });
 };
 handleShowForm = () => {
   this.setState({ showForm: true });
 };
 handleCloseForm = () => {
-  this.setState({ showForm: false, postToEdit: undefined });
+  console.log("handleCloseForm");
+  this.setState({ showForm: false, productToEdit: undefined });
 };
 
 render() {

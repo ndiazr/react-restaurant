@@ -46,8 +46,11 @@ class ProductForm extends Component{
     // const post = Object.assign({}, this.state, { date: Date() });
     const product = this.state.productState;
     console.log(product);
-    this.setState({ productState: ProductForm.productState() }, () => createProduct(product));
-    // createPost(post);
+    this.setState(
+      { productState: ProductForm.productState() },
+     () => createProduct(product));
+
+
   };
   handleEditProduct = () => {
     console.log(`Entramos a handleEditProduct`);
@@ -69,6 +72,8 @@ class ProductForm extends Component{
     this.setState({ productState: ProductForm.productState()});
     closeForm();
   };
+
+
   render(){
       const { active, closeForm, product } = this.props;
       const actions = [

@@ -55,7 +55,7 @@ export function editProduct( product ) {
 
 
 export function deleteProduct (id){
-  console.log('actions');
+  //console.log('actions');
   return (dispatch) => {
     dispatch(toggleProductsLoading());
   //  console.log(`${endpoints.posts}/${id}`);
