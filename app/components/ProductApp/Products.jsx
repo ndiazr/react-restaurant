@@ -50,7 +50,7 @@ createProduct = (product) => {
 handleEditProduct = (product) => {
   //console.log('editProduct');
   const {editProduct} = this.props;
-  this.setState({ showForm: false , product: undefined},
+  this.setState({ showForm: false , productToEdit: undefined},
     () => editProduct(product.toJS()))
 }
 

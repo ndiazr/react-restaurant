@@ -75,6 +75,7 @@ class ProductForm extends Component{
 
 
   render(){
+    console.log(this.state.productState);
       const { active, closeForm, product } = this.props;
       const actions = [
         { label: "Cancel", onClick: this.handleClose },
