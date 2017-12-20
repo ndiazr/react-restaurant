@@ -22,7 +22,7 @@ export function createProduct(product) {
   //console.log(post);
   return (dispatch) => {
     dispatch(toggleProductsLoading());
-    return fetch('http://localhost:3000/posts', {
+    return fetch(`${endpoints.orders}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(assign({}, product)),
@@ -35,7 +35,7 @@ export function createProduct(product) {
   };
 }
 
-export function editProduct( product ) {
+export function editProduct(product) {
   console.log(`Product recibido ${product}`);
   return (dispatch) => {
     dispatch(toggleProductsLoading());
@@ -54,7 +54,7 @@ export function editProduct( product ) {
 }
 
 
-export function deleteProduct (id){
+export function deleteProduct(id){
   //console.log('actions');
   return (dispatch) => {
     dispatch(toggleProductsLoading());
@@ -70,12 +70,10 @@ export function deleteProduct (id){
   }
 }
 
-
-
 export function fetchProducts() {
   return (dispatch) => {
     dispatch(toggleProductsLoading());
-    return fetch('http://localhost:3000/posts', {
+    return fetch(`${endpoints.orders}`, {
       method: 'GET',
     })
     .then(response => response.json())

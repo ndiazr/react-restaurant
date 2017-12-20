@@ -38,27 +38,35 @@ class Orders extends Component {
   }
 
   handleCreateOrder = (order) => {
-
+    const { createPost } = this.props;
+    this.setState({ showForm: false }, () => createPost(post.toJS()));
   };
   
   handleEditOrder = (order) => {
-
+    const { editPost } = this.props;
+    this.setState({ showForm: false }, () => editPost(post.toJS()));
   };
 
   handleEditOrderForm = (id, order) => {
-
+    this.setState({
+      showForm: true,
+      postToEdit: post
+        .set('id', id)
+        .set('updated_at', Date()),
+    });
   };
 
   handleDeleteOrder = (id) => {
-
+    const { deletePost } = this.props;
+    deletePost(id);
   };
 
   handleShowForm = () => {
-
+    this.setState({ showForm: true });
   };
 
   handleCloseForm = () => {
-
+    this.setState({ showForm: false, postToEdit: undefined });
   };
 
   render() {
