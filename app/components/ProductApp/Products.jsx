@@ -17,6 +17,7 @@ class Products extends Component{
 state = {
   showForm: false,
   productToEdit: undefined,
+  nameToEdit: undefined,
 };
 
  componentDidMount() {
@@ -50,16 +51,20 @@ createProduct = (product) => {
 handleEditProduct = (product) => {
   //console.log('editProduct');
   const {editProduct} = this.props;
-  this.setState({ showForm: false , product: undefined},
+  this.setState({ showForm: false ,
+                  productToEdit: undefined,
+                  nameToEdit: undefined,
+                },
     () => editProduct(product.toJS()))
 }
 
 handleEditProductForm = (id, product) => {
-  console.log('editProductForm '+ product);
+  //console.log('editProductForm '+ product.get('name');
   this.setState({
     showForm: true,
     productToEdit: product
       .set('id', id),
+    nameToEdit: product.get('name'),
     //  .set('updated_at'),
   });
 };
@@ -67,12 +72,13 @@ handleShowForm = () => {
   this.setState({ showForm: true });
 };
 handleCloseForm = () => {
-  console.log("handleCloseForm");
+  //console.log("handleCloseForm");
   this.setState({ showForm: false, productToEdit: undefined });
 };
 
 render() {
   //console.log(this.props.productsData.get('products'));
+  const nameToEdit = this.props.productsData.get('name');
   const products = this.props.productsData.get('products');
   const productItems = products.map(
     product => (
@@ -94,10 +100,11 @@ render() {
         editProduct={this.handleEditProduct}
         closeForm={this.handleCloseForm}
         product={this.state.productToEdit}
+        nameToEdit={this.state.nameToEdit}
       />
       <Button
-        icon="add"
-        label="Create Product "
+        icon="add" floating accent mini
+      //    label="Create Product "
         onClick={this.handleShowForm}
       />
     </div>
