@@ -32,10 +32,10 @@ class Product extends Component{
   }
   render(){
     const { product, editProduct, deleteProduct, id} = this.props;
-    return(
-      {
-        console.log(` producto recibido: ${this.state}`);  
-      }
+    return (
+      // {
+      //   console.log(` producto recibido: ${this.state}`),
+      // }
       <Card style={{width: '600px'}}>
         <CardTitle
           title={product.get('name')}

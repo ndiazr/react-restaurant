@@ -18,36 +18,45 @@ class ItemProductForm extends Component {
   };
 
   handleChangeItem = (e) => {
-    if(e.target.id === 'add'){
+    if (e.target.id === 'add') {
       this.setState({
-        cantProduct: this.state.cantProduct + 1
+        cantProduct: this.state.cantProduct + 1,
       });
-    }else if(e.target.id === 'substract' && this.state.cantProduct > 0){
+    } else if (e.target.id === 'substract' && this.state.cantProduct > 0) {
       this.setState({
-        cantProduct: this.state.count - 1
+        cantProduct: this.state.count - 1,
       });
-    }else {
+    } else {
       this.setState({
-        cantProduct: 0
+        cantProduct: 0,
       });
     }
-  };
+  }
+
+  handleCantChanged(e) {
+    if (e.target.id === 'cant') {
+      this.setState({
+        totalProduct: this.state.cantProduct * this.props.valUnit,
+      });
+    }
+  }
 
   render() {
     return (
       <div>
+        <h2>{this.props.descProduct}</h2>
         <Button
           id="add"
           icon="add" floating accent mini
           onClick={this.handleChangeItem}
         />
-        <h1>{this.state.cantProduct}</h1>
+        <h2 id="cant" onChange={this.handleCantChanged}> {this.state.cantProduct} </h2>
         <Button
           id="substract"
           icon="add" floating accent mini
           onClick={this.handleChangeItem}
         />
-        <h1>{this.state.totalProduct}</h1>
+        <h2>{this.state.totalProduct}</h2>
       </div>
     );
   }

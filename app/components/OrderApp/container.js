@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Orders from './Orders';
 import {
-  fetchPosts,
+  fetchOrders,
   fetchProducts,
-  createPost,
-  editPost,
-  deletePost,
+  createOrder,
+  editOrder,
+  deleteOrder,
 } from '../../actions';
 
 const mapStateToProps = (state) => ({
@@ -16,11 +16,11 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
-    fetchPosts,
+    fetchOrders,
     fetchProducts,
-    createPost,
-    editPost,
-    deletePost,
+    createOrder,
+    editOrder,
+    deleteOrder,
   }, dispatch)
 );
 
