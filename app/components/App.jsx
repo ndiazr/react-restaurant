@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import store from '../store';
 import Home from './Home/Home';
 import Products from './ProductApp/container';
-//import Orders from './OrderApp/Orders';
+import Orders from './OrderApp/Orders';
 
 import Contact from './Contact/Contact';
 import PageNotFound from './PageNotFound/PageNotFound';
@@ -19,7 +19,7 @@ const App = ({ header }) => (
     <Switch>
       <Route path='/' exact component={Home} />
       <Route path='/products/' exact component={Products} />
-      {/* <Route path='/orders/' exact component={Order} /> */}
+      <Route path='/orders/' exact component={Orders} />
       <Route path='/contact/' exact component={Contact} />
       <Route component={PageNotFound} />
     </Switch>

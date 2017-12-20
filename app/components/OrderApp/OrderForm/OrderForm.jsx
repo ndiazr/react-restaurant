@@ -52,10 +52,10 @@ class OrderForm extends Component {
     this.setState({ orderState });
   }
 
-  handleCreateorder = () => {
-    const { createorder } = this.props;
+  handleCreateOrder = () => {
+    const { createOrder } = this.props;
     const order = this.state.orderState.set('date', Date());
-    this.setState({ orderState: OrderForm.orderState() }, () => createorder(order));
+    this.setState({ orderState: OrderForm.orderState() }, () => createOrder(order));
   };
 
   handleEditorder = () => {
@@ -85,28 +85,27 @@ class OrderForm extends Component {
       {
         label: isNil(order) ? "Create" : "Update",
         onClick: isNil(order) ? this.handleCreateorder : this.handleEditorder,
-      }
+      },
     ];
-      return (
-        <div>
-          <Dialog
-            actions={actions}
-            active={active}
-            onEscKeyDown={this.handleClose}
-            onOverlayClick={this.handleClose}
-            title='My awesome dialog'
-          >
-            <Input
-              label="Name Consumer"
-              onChange={this.onNameConsumerChange}
-              value={this.state.orderState.get('nameConsumer')}
-            />
-            {this.state.productItemComponents}
-            <h1>{this.state.orderState.totalOrder}</h1>
-          </Dialog>
-
-        </div>
-      );
+    return (
+      <div>
+        <Dialog
+          actions={actions}
+          active={active}
+          onEscKeyDown={this.handleClose}
+          onOverlayClick={this.handleClose}
+          title='My awesome dialog'
+        >
+          <Input
+            label="Name Consumer"
+            onChange={this.onNameConsumerChange}
+            value={this.state.orderState.get('nameConsumer')}
+          />
+          {this.state.productItemComponents}
+          <h1>{this.state.orderState.totalOrder}</h1>
+        </Dialog>
+      </div>
+    );
   }
 }
 
