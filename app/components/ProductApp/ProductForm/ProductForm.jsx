@@ -10,8 +10,10 @@ class ProductForm extends Component{
   static propTypes = {
     product: ImmutablePropTypes.map,
     createProduct: PropTypes.func.isRequired,
+    editProduct: PropTypes.func.isRequired,
     active: PropTypes.bool.isRequired,
     closeForm: PropTypes.func.isRequired,
+    nameToEdit: PropTypes.string,
   };
   static productState = () => fromJS({
     name: '',
@@ -30,22 +32,26 @@ class ProductForm extends Component{
     const productState = this.state.productState.set('cost',value);
     this.setState({productState});
   }
-  onSellCostChange = (value) =>{
+  onDetailChange = (value) =>{
     const productState = this.state.productState.set('detail',value);
     this.setState({productState});
   }
-
+  componentDidMount() {
+    //const { nameToEdit } = this.state.nameToEdit;
+    //console.log(`componentDidMount ${nameToEdit}`);
+    //const productState = this.state.productState.set('nameToEdit',"esto");
+    //fetchPosts();
+  }
   componentWillReceiveProps(nextProps) {
     const { product } = nextProps;
-    //console.log(post);
+    //console.log(`product nextProps ${ product }`);
     this.setState({ productState: product  || ProductForm.productState()});
     // this.setState({ postState: nextProps.post || PostForm.postState() }),
   }
   handleCreateProduct = () => {
     const { createProduct } = this.props;
-    // const post = Object.assign({}, this.state, { date: Date() });
     const product = this.state.productState;
-    console.log(product);
+    //console.log(product);
     this.setState(
       { productState: ProductForm.productState() },
      () => createProduct(product));
@@ -75,14 +81,16 @@ class ProductForm extends Component{
 
 
   render(){
-    console.log(this.state.productState);
-      const { active, closeForm, product } = this.props;
+      const { active, closeForm, product, nameToEdit } = this.props;
+      //console.log("nameToEdit: "+nameToEdit);
+      //console.log(`this.state.productState.get('name') ${this.state.productState.get('name')}`);
       const actions = [
         { label: "Cancel", onClick: this.handleClose },
         {
           label: isNil(product) ? "Create" : "Update",
-          onClick: isNil(product) ? this.handleCreateProduct : this.handleEditProduct,
-        }
+          onClick: isNil(product) ? this.handleCreateProduct
+                                  : this.handleEditProduct,
+        },
       ];
       return (
         <div>
@@ -91,7 +99,9 @@ class ProductForm extends Component{
             active={active}
             onEscKeyDown={this.handleClose}
             onOverlayClick={this.handleClose}
-            title = {isNil(product) ? "Create Product" : "Edit Product"}
+            title = {isNil(product) ?"Create Product"
+                                    : `Edit ${nameToEdit}`//"Edit Product"
+                    }
             //title='Create Product'
           >
             <Input
@@ -108,7 +118,7 @@ class ProductForm extends Component{
             <Input
               type = 'text'
               label="Detail"
-              onChange={this.onSellCostChange}
+              onChange={this.onDetailChange}
               value={this.state.productState.get('detail')}
             />
           </Dialog>
