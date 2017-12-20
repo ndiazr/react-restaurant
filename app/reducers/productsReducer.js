@@ -14,10 +14,10 @@ export default function productsData(state = initialState, action) {
     case ACTION_TYPES.RECEIVE_PRODUCTS: {
       //console.log(action.posts);
       //console.log(action.products);
-      const totalResults = action.posts.length;
-      const posts = fromJS(action.posts).sort(p => p._id);
+      const totalResults = action.product.length;
+      const products = fromJS(action.product).sort(p => p._id);
       return state.withMutations(map => {
-        map.set('products', posts)
+        map.set('products', products)
           .set('totalResults', totalResults)
           .set('refresh', false);
       });
