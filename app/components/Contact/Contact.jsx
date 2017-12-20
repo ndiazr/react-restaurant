@@ -3,6 +3,7 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import { Input } from 'react-toolbox/lib/input';
 import { Button } from 'react-toolbox/lib/button';
+import style from './style.scss';
 
 class Contact extends Component {
   state = {
@@ -18,7 +19,7 @@ class Contact extends Component {
 
   render() {
     return (
-      <div> 
+      <div className={style.contact}> 
         <Nav />
         <h1>Contact</h1>
         <Input
