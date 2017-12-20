@@ -11,9 +11,11 @@ class Orders extends Component {
 
   static propTypes = {
     fetchOrders: PropTypes.func.isRequired,
+    fetchProducts: PropTypes.func.isRequired,
     deleteOrder: PropTypes.func.isRequired,
     editOrder: PropTypes.func.isRequired,
     ordersData: ImmutablePropTypes.map.isRequired,
+    productsData: ImmutablePropTypes.map.isRequired,
   };
 
   state = {
@@ -21,9 +23,10 @@ class Orders extends Component {
     orderToEdit: undefined,
   };
 
-  componentDidMount() {
-    const { fetchOrders } = this.fetchOrders;
-    fetchOrders();
+  async componentDidMount() {
+    const { fetchOrders, fetchProducts } = this.fetchOrders;
+    await fetchOrders();
+    await fetchProducts();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -60,6 +63,7 @@ class Orders extends Component {
 
   render() {
     const orders = this.props.ordersData.get('orders');
+    const products = this.props.productsData.get('products');
     const orderItems = orders.map(order => (
       <Order
         key={order.get('_id')}
@@ -79,6 +83,7 @@ class Orders extends Component {
           createOrder={this.handleCreateOrder}
           editOrder={this.handleEditOrder}
           order={this.state.orderToEdit}
+          products={products}
         />
         <Button
           icon="add"

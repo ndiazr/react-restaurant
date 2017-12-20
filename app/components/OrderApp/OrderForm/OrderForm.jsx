@@ -10,35 +10,45 @@ import ItemProductForm from './ItemProductForm';
 class OrderForm extends Component {
   
   static propTypes = {
-      order: ImmutablePropTypes.map,
-      createOrder: PropTypes.func.isRequired,
-      active: PropTypes.bool.isRequired,
-      closeForm: PropTypes.func.isRequired,
+    order: ImmutablePropTypes.map,
+    products: ImmutablePropTypes.map,
+    createOrder: PropTypes.func.isRequired,
+    active: PropTypes.bool.isRequired,
+    closeForm: PropTypes.func.isRequired,
   };
 
   static orderState = () => fromJS({
     nameConsumer: '',
     productItems: [],
+    totalOrder: 0,
   });
 
   state = {
     orderState: OrderForm.orderState(),
+    productItemComponents: [],
   };
+
+  componentWillMount() {
+    const { products } = this.props;
+    const productItemComponents = products.map(item => (
+      <ItemProductForm
+        idProduct={item.get('idProduct')}
+        descProduct={item.get('descProduct')}
+        cantProduct={item.get('cantProduct')}
+        valUnit={item.get('valUnit')}
+      />
+    ));
+    this.setState({ productItemComponents });
+  }
 
   componentWillReceiveProps(nextProps) {
     const { order } = nextProps;
-    console.log(order);
     this.setState({ orderState: order || OrderForm.orderState() });
     // this.setState({ orderState: nextProps.order || orderForm.orderState() }),
   }
 
-  onTitleChange = (value) => {
-    const orderState = this.state.orderState.set('title', value);
-    this.setState({ orderState });
-  }
-
-  onBodyChange = (value) => {
-    const orderState = this.state.orderState.set('body', value);
+  onNameConsumerChange = (value) => {
+    const orderState = this.state.orderState.set('nameConsumer', value);
     this.setState({ orderState });
   }
 
@@ -87,15 +97,12 @@ class OrderForm extends Component {
             title='My awesome dialog'
           >
             <Input
-              label="Title"
-              onChange={this.onTitleChange}
-              value={this.state.orderState.get('title')}
+              label="Name Consumer"
+              onChange={this.onNameConsumerChange}
+              value={this.state.orderState.get('nameConsumer')}
             />
-            <Input
-              label="Body"
-              onChange={this.onBodyChange}
-              value={this.state.orderState.get('body')}
-            />
+            {this.state.productItemComponents}
+            <h1>{this.state.orderState.totalOrder}</h1>
           </Dialog>
 
         </div>

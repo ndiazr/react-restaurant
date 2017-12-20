@@ -18,17 +18,21 @@ const Order = ({ order, editOrder, deleteOrder, id }) => (
       subtitle={order.get('date')}
     />
     <CardText>
-      <div className={style.row}>
-        <div className={style.column}>
-          <h1></h1>
-        </div>
-        <div className={style.column}>
-          <h1></h1>
-        </div>
-        <div className={style.column}>
-          <h1></h1>
-        </div>
-      </div>    
+      {
+        order.get('productItems').map(item => (
+          <div className={style.row}>
+            <div className={style.column}>
+              <h1>{item.get('descProduct')}</h1>
+            </div>
+            <div className={style.column}>
+              <h1>{item.get('cantProduct')}</h1>
+            </div>
+            <div className={style.column}>
+              <h1>{item.get('totalProduct')}</h1>
+            </div>
+          </div>    
+        ))
+      }        
     </CardText>
 
     <CardActions>
