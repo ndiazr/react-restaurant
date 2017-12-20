@@ -1,10 +1,10 @@
 import assign from 'lodash/fp/assign';
 import { endpoints } from '../constants';
 
-export const receiveProducts = (posts) => (
+export const receiveProducts = (product) => (
   {
     type: 'RECEIVE_PRODUCTS',
-    posts,
+    product,
   }
 );
 
@@ -18,14 +18,14 @@ export const toggleProductsLoading = () => ({
   type: 'TOGGLE_PRODUCTS_LOADING',
 });
 
-export function createProduct(post) {
+export function createProduct(product) {
   //console.log(post);
   return (dispatch) => {
     dispatch(toggleProductsLoading());
     return fetch('http://localhost:3000/posts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(assign({}, post)),
+      body: JSON.stringify(assign({}, product)),
     })
     .then(response => {
       dispatch(toggleProductsLoading())
