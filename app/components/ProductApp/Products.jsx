@@ -7,6 +7,8 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import Product from './Product/Product';
 import ProductForm from './ProductForm/ProductForm';
 import { endpoints } from '../../constants';
+import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
 
 class Products extends Component{
   static propTypes = {
@@ -92,7 +94,9 @@ render() {
     )
   ).toJS();
   return (
+
     <div>
+      <Nav />
       {productItems}
       <ProductForm
         active={this.state.showForm}
@@ -107,6 +111,7 @@ render() {
       //    label="Create Product "
         onClick={this.handleShowForm}
       />
+        <Footer />
     </div>
   );
 }
