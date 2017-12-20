@@ -22,7 +22,7 @@ export function createProduct(product) {
   //console.log(post);
   return (dispatch) => {
     dispatch(toggleProductsLoading());
-    return fetch(`${endpoints.orders}`, {
+    return fetch(`${endpoints.posts }`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(assign({}, product)),
@@ -73,7 +73,7 @@ export function deleteProduct(id){
 export function fetchProducts() {
   return (dispatch) => {
     dispatch(toggleProductsLoading());
-    return fetch(`${endpoints.orders}`, {
+    return fetch(`${endpoints.posts}`, {
       method: 'GET',
     })
     .then(response => response.json())
