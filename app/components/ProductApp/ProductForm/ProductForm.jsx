@@ -17,7 +17,7 @@ class ProductForm extends Component{
   };
   static productState = () => fromJS({
     name: '',
-    cost: '',
+    cost: 0,
     detail: '',
   });
 

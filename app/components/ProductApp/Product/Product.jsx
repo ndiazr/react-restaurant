@@ -39,7 +39,7 @@ class Product extends Component{
       <Card style={{width: '600px'}}>
         <CardTitle
           title={product.get('name')}
-          subtitle={product.get('cost')}
+          subtitle={`${ product.get('cost') }`}
         />
         <CardMedia
           aspectRatio="wide"
