@@ -32,10 +32,10 @@ class OrderForm extends Component {
     const { products } = this.props;
     const productItemComponents = products.map(item => (
       <ItemProductForm
-        idProduct={item.get('idProduct')}
-        descProduct={item.get('descProduct')}
-        cantProduct={item.get('cantProduct')}
-        valUnit={item.get('valUnit')}
+        key={item.get('_id')}
+        idProduct={item.get('_id')}
+        descProduct={item.get('name')}
+        valUnit={item.get('cost')}
       />
     ));
     this.setState({ productItemComponents });
@@ -52,9 +52,15 @@ class OrderForm extends Component {
     this.setState({ orderState });
   }
 
+  onTotalOrderChange = (value) => {
+    const orderState = this.state.orderState.set('totalOrder', value);
+    this.setState({ orderState });
+  }
+
   handleCreateOrder = () => {
     const { createOrder } = this.props;
     const order = this.state.orderState.set('date', Date());
+    console.log(order);
     this.setState({ orderState: OrderForm.orderState() }, () => createOrder(order));
   };
 
@@ -77,14 +83,13 @@ class OrderForm extends Component {
   };
 
   render() {
-
     const { active, closeForm, order } = this.props;
 
     const actions = [
       { label: "Cancel", onClick: this.handleClose },
       {
         label: isNil(order) ? "Create" : "Update",
-        onClick: isNil(order) ? this.handleCreateorder : this.handleEditorder,
+        onClick: isNil(order) ? this.handleCreateOrder : this.handleEditOrder,
       },
     ];
     return (
@@ -99,10 +104,12 @@ class OrderForm extends Component {
           <Input
             label="Name Consumer"
             onChange={this.onNameConsumerChange}
-            value={this.state.orderState.get('nameConsumer')}
+            value={this.state.orderState.get('name')}
           />
           {this.state.productItemComponents}
-          <h1>{this.state.orderState.totalOrder}</h1>
+          <h1
+            onChange={this.onTotalOrderChange}
+          >{this.state.orderState.totalOrder}</h1>
         </Dialog>
       </div>
     );

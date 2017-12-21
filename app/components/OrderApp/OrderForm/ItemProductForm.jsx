@@ -4,11 +4,11 @@ import Button from 'react-toolbox/lib/button';
 import styleItem from './styleItem.scss';
 
 class ItemProductForm extends Component {
-  
+
   static propTypes = {
     idProduct: PropTypes.number.isRequired,
     descProduct: PropTypes.string.isRequired,
-    cantProduct: PropTypes.number.isRequired,
+    // cantProduct: PropTypes.number.isRequired,
     valUnit: PropTypes.number.isRequired,
   };
 
@@ -33,30 +33,38 @@ class ItemProductForm extends Component {
     }
   }
 
-  handleCantChanged(e) {
-    if (e.target.id === 'cant') {
-      this.setState({
-        totalProduct: this.state.cantProduct * this.props.valUnit,
-      });
-    }
+  handleCantChanged() {
+    this.setState({
+      totalProduct: this.state.cantProduct * this.props.valUnit,
+    });
   }
 
   render() {
     return (
       <div className={styleItem.row}>
-        <h2>{this.props.descProduct}</h2>
-        <Button
-          id="add"
-          icon="add" floating accent mini
-          onClick={this.handleChangeItem}
-        />
-        <h2 id="cant" onChange={this.handleCantChanged}> {this.state.cantProduct} </h2>
-        <Button
-          id="substract"
-          icon="add" floating accent mini
-          onClick={this.handleChangeItem}
-        />
-        <h2>{this.state.totalProduct}</h2>
+        <div className={styleItem.column}>
+          <h2>{this.props.descProduct}</h2>
+        </div>
+        <div className={styleItem.column}>
+          <Button
+            id="substract"
+            icon="delete"
+            onClick={this.handleChangeItem}
+          />
+        </div>
+        <div className={styleItem.column}>
+          <h2 id="cant" onChange={this.handleCantChanged}> {this.state.cantProduct} </h2>
+        </div>
+        <div className={styleItem.column}>
+          <Button
+            id="add"
+            icon="add" floating accent mini
+            onClick={this.handleChangeItem}
+          />
+        </div>
+        <div className={styleItem.column}>
+          <h2>{this.state.totalProduct}</h2>
+        </div>
       </div>
     );
   }

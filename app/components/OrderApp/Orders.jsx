@@ -40,6 +40,7 @@ class Orders extends Component {
   }
 
   handleCreateOrder = (order) => {
+    console.log('handleCreate');
     const { createOrder } = this.props;
     this.setState({ showForm: false }, () => createOrder(order.toJS()));
   };

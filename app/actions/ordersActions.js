@@ -22,7 +22,7 @@ export function createOrder(orders) {
   // console.log(post);
   return (dispatch) => {
     dispatch(toggleOrdersLoading());
-    return fetch(`${endpoints.oredrs}`, {
+    return fetch(`${endpoints.orders}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(assign({}, orders)),
@@ -57,8 +57,7 @@ export function deleteOrder(id) {
   // console.log('actions');
   return (dispatch) => {
     dispatch(toggleOrdersLoading());
-  //  console.log(`${endpoints.posts}/${id}`);
-    return fetch(`${endpoints.oredrs}/${id}`, {
+    return fetch(`${endpoints.orders}/${id}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -72,7 +71,6 @@ export function deleteOrder(id) {
 export function fetchOrders() {
   return (dispatch) => {
     dispatch(toggleOrdersLoading());
-    console.log(`${endpoints.orders}`);
     return fetch(`${endpoints.orders}`, {
       method: 'GET',
     })
