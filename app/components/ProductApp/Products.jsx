@@ -106,11 +106,13 @@ render() {
         product={this.state.productToEdit}
         nameToEdit={this.state.nameToEdit}
       />
-      <Button
-        icon="add" floating accent mini
-      //    label="Create Product "
-        onClick={this.handleShowForm}
-      />
+      <div>
+        <Button
+          icon="add" //floating accent mini
+          label="Create Product "
+          onClick={this.handleShowForm}
+        />
+      </div>
         <Footer />
     </div>
   );
