@@ -53,7 +53,7 @@ const Order = ({ order, editOrder, deleteOrder, id }) => (
 );
 
 Order.propTypes = {
-  id: PropTypes.number.isRequired,
+  // id: PropTypes.number.isRequired,
   order: ImmutablePropTypes.map.isRequired,
   editOrder: PropTypes.func.isRequired,
   deleteOrder: PropTypes.func.isRequired,

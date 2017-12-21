@@ -99,7 +99,7 @@ class Orders extends Component {
         <Button
           icon="add" 
           label="Create Order"
-          ocClick={this.handleShowForm}
+          onClick={this.handleShowForm}
         />
         <Footer />
       </div>

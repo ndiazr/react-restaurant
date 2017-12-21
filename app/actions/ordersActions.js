@@ -72,7 +72,8 @@ export function deleteOrder(id) {
 export function fetchOrders() {
   return (dispatch) => {
     dispatch(toggleOrdersLoading());
-    return fetch(`${endpoints.oredrs}`, {
+    console.log(`${endpoints.orders}`);
+    return fetch(`${endpoints.orders}`, {
       method: 'GET',
     })
     .then(response => response.json())

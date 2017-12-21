@@ -94,7 +94,7 @@ class OrderForm extends Component {
           active={active}
           onEscKeyDown={this.handleClose}
           onOverlayClick={this.handleClose}
-          title='My awesome dialog'
+          title='Orders'
         >
           <Input
             label="Name Consumer"
