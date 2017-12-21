@@ -22,7 +22,7 @@ export function createProduct(product) {
   //console.log(post);
   return (dispatch) => {
     dispatch(toggleProductsLoading());
-    return fetch(`${endpoints.posts }`, {
+    return fetch(`${endpoints.products }`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(assign({}, product)),
@@ -40,7 +40,7 @@ export function editProduct(product) {
   return (dispatch) => {
     dispatch(toggleProductsLoading());
     //console.log(`${endpoints.posts}${post.id}`);
-    return fetch(`${endpoints.posts}/${product.id}`, {
+    return fetch(`${endpoints.products}/${product.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(assign({}, product)),
@@ -59,7 +59,7 @@ export function deleteProduct(id){
   return (dispatch) => {
     dispatch(toggleProductsLoading());
   //  console.log(`${endpoints.posts}/${id}`);
-    return fetch(`${endpoints.posts}/${id}`,{
+    return fetch(`${endpoints.products}/${id}`,{
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' }
     })
@@ -73,7 +73,7 @@ export function deleteProduct(id){
 export function fetchProducts() {
   return (dispatch) => {
     dispatch(toggleProductsLoading());
-    return fetch(`${endpoints.posts}`, {
+    return fetch(`${endpoints.products}`, {
       method: 'GET',
     })
     .then(response => response.json())
