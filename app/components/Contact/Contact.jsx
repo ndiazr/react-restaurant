@@ -19,42 +19,44 @@ class Contact extends Component {
 
   render() {
     return (
-      <div className={style.contact}> 
-        <Nav />
+      <div>
+      <Nav />
+      <div className={style.contact}>
         <h1>Contact</h1>
         <Input
-          type='text' 
-          label='Name' 
-          name='name' 
-          value={this.state.name} 
-          onChange={this.handleChange.bind(this, 'name')} 
+          type='text'
+          label='Name'
+          name='name'
+          value={this.state.name}
+          onChange={this.handleChange.bind(this, 'name')}
         />
         <Input
-          type='email' 
-          label='Email' 
-          name='email' 
-          value={this.state.email} 
+          type='email'
+          label='Email'
+          name='email'
+          value={this.state.email}
           onChange={this.handleChange.bind(this, 'email')}
         />
         <Input
-          type='text' 
-          label='Country' 
-          name='country' 
-          value={this.state.country} 
+          type='text'
+          label='Country'
+          name='country'
+          value={this.state.country}
           onChange={this.handleChange.bind(this, 'country')}
         />
         <Input
           type='text' multiline
-          label='Message' 
-          name='message' 
-          value={this.state.message} 
+          label='Message'
+          name='message'
+          value={this.state.message}
           onChange={this.handleChange.bind(this, 'message')}
         />
         <Button
-        
+
         />
-        <Footer />
       </div>
+      <Footer />
+    </div>
     );
   }
 }
