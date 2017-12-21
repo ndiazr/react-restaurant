@@ -11,7 +11,7 @@ class OrderForm extends Component {
 
   static propTypes = {
     order: ImmutablePropTypes.map,
-    products: ImmutablePropTypes.map,
+    products: ImmutablePropTypes.list,
     createOrder: PropTypes.func.isRequired,
     active: PropTypes.bool.isRequired,
     closeForm: PropTypes.func.isRequired,

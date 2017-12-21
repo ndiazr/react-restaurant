@@ -32,7 +32,7 @@ class Orders extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { fetchOrders } = this.fetchOrders;
+    const { fetchOrders } = this.props;
     const { ordersData } = nextProps;
     if (!ordersData.get('ordersLoading') && ordersData.get('refresh')) {
       fetchOrders();

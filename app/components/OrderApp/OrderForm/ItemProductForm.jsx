@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import Button from 'react-toolbox/lib/button';
+import styleItem from './styleItem.scss';
 
 class ItemProductForm extends Component {
   
@@ -24,7 +24,7 @@ class ItemProductForm extends Component {
       });
     } else if (e.target.id === 'substract' && this.state.cantProduct > 0) {
       this.setState({
-        cantProduct: this.state.count - 1,
+        cantProduct: this.state.cantProduct - 1,
       });
     } else {
       this.setState({
@@ -43,7 +43,7 @@ class ItemProductForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styleItem.row}>
         <h2>{this.props.descProduct}</h2>
         <Button
           id="add"

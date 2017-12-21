@@ -37,10 +37,6 @@ const Order = ({ order, editOrder, deleteOrder, id }) => (
 
     <CardActions>
       <IconButton
-        icon={this.state.buttonIcon}
-        onClick={this.handleToggleComments}
-      />
-      <IconButton
         icon="edit"
         onClick={() => editOrder(id, order)}
       />
