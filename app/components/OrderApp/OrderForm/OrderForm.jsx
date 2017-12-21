@@ -8,7 +8,7 @@ import Dialog from 'react-toolbox/lib/dialog';
 import ItemProductForm from './ItemProductForm';
 
 class OrderForm extends Component {
-  
+
   static propTypes = {
     order: ImmutablePropTypes.map,
     products: ImmutablePropTypes.map,

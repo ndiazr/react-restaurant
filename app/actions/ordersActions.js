@@ -19,7 +19,7 @@ export const toggleOrdersLoading = () => ({
 });
 
 export function createOrder(orders) {
-  //console.log(post);
+  // console.log(post);
   return (dispatch) => {
     dispatch(toggleOrdersLoading());
     return fetch('http://localhost:3000/posts', {
@@ -28,52 +28,52 @@ export function createOrder(orders) {
       body: JSON.stringify(assign({}, orders)),
     })
     .then(response => {
-      dispatch(toggleOrdersLoading())
-      dispatch(refreshOrders())
+      dispatch(toggleOrdersLoading());
+      dispatch(refreshOrders());
       // dispatch(receiveCreatePost(response))
     });
   };
 }
 
-export function editOrder( order ) {
+export function editOrder(order) {
   console.log(`Product recibido ${order}`);
   return (dispatch) => {
     dispatch(toggleOrdersLoading());
     //console.log(`${endpoints.posts}${post.id}`);
-    return fetch(`${endpoints.posts}/${order.id}`, {
+    return fetch(`${endpoints.orders}/${order.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(assign({}, order)),
     })
     .then(response => {
-      dispatch(toggleOrdersLoading())
-      dispatch(refreshOrders())
+      dispatch(toggleOrdersLoading());
+      dispatch(refreshOrders());
       // dispatch(receiveCreatePost(response))
     });
   };
 }
 
 
-export function deleteOrder (id){
-  //console.log('actions');
+export function deleteOrder(id) {
+  // console.log('actions');
   return (dispatch) => {
     dispatch(toggleOrdersLoading());
   //  console.log(`${endpoints.posts}/${id}`);
-    return fetch(`${endpoints.posts}/${id}`,{
+    return fetch(`${endpoints.posts}/${id}`, {
       method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
     })
-    .then( response => {
-      dispatch(toggleOrdersLoading())
-      dispatch(refreshOrders())
-    })
-  }
+    .then(response => {
+      dispatch(toggleOrdersLoading());
+      dispatch(refreshOrders());
+    });
+  };
 }
 
 export function fetchOrders() {
   return (dispatch) => {
     dispatch(toggleOrdersLoading());
-    return fetch('http://localhost:3000/posts', {
+    return fetch(`${endpoints.oredrs}`, {
       method: 'GET',
     })
     .then(response => response.json())

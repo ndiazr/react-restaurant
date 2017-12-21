@@ -6,6 +6,8 @@ import { fromJS, List } from 'immutable';
 import Order from './Order/Order';
 import OrderForm from './OrderForm/OrderForm';
 import { Button } from 'react-toolbox/lib/button';
+import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
 
 class Orders extends Component {
 
@@ -24,7 +26,7 @@ class Orders extends Component {
   };
 
   async componentDidMount() {
-    const { fetchOrders, fetchProducts } = this.fetchOrders;
+    const { fetchOrders, fetchProducts } = this.props;
     await fetchOrders();
     await fetchProducts();
   }
@@ -38,27 +40,27 @@ class Orders extends Component {
   }
 
   handleCreateOrder = (order) => {
-    const { createPost } = this.props;
-    this.setState({ showForm: false }, () => createPost(post.toJS()));
+    const { createOrder } = this.props;
+    this.setState({ showForm: false }, () => createOrder(order.toJS()));
   };
-  
+
   handleEditOrder = (order) => {
-    const { editPost } = this.props;
-    this.setState({ showForm: false }, () => editPost(post.toJS()));
+    const { editOrder } = this.props;
+    this.setState({ showForm: false }, () => editOrder(order.toJS()));
   };
 
   handleEditOrderForm = (id, order) => {
     this.setState({
       showForm: true,
-      postToEdit: post
+      orderToEdit: order
         .set('id', id)
         .set('updated_at', Date()),
     });
   };
 
   handleDeleteOrder = (id) => {
-    const { deletePost } = this.props;
-    deletePost(id);
+    const { deleteOrder } = this.props;
+    deleteOrder(id);
   };
 
   handleShowForm = () => {
@@ -84,6 +86,7 @@ class Orders extends Component {
 
     return (
       <div>
+        <Nav />
         {orderItems}
         <OrderForm
           active={this.state.showForm}
@@ -94,10 +97,11 @@ class Orders extends Component {
           products={products}
         />
         <Button
-          icon="add"
+          icon="add" 
           label="Create Order"
           ocClick={this.handleShowForm}
         />
+        <Footer />
       </div>
     );
   }
