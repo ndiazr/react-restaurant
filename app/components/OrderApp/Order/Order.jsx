@@ -32,7 +32,7 @@ const Order = ({ order, editOrder, deleteOrder, id }) => (
             </div>
           </div>    
         ))
-      }        
+      }       
     </CardText>
 
     <CardActions>
