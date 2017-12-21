@@ -52,7 +52,8 @@ class Contact extends Component {
           onChange={this.handleChange.bind(this, 'message')}
         />
         <Button
-
+          icon="email" 
+          label="Send"
         />
       </div>
       <Footer />
