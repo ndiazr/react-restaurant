@@ -20,7 +20,7 @@ const ProductSchema = new Schema({
     Required: 'Kindly enter the name of the product'
   },
   cost: {
-    type: String,
+    type: Number,
     Required: 'Kindly enter the name of the product'
   },
   // tags: Array,
