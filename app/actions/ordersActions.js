@@ -22,7 +22,7 @@ export function createOrder(orders) {
   // console.log(post);
   return (dispatch) => {
     dispatch(toggleOrdersLoading());
-    return fetch('http://localhost:3000/posts', {
+    return fetch(`${endpoints.oredrs}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(assign({}, orders)),
@@ -36,10 +36,10 @@ export function createOrder(orders) {
 }
 
 export function editOrder(order) {
-  console.log(`Product recibido ${order}`);
+  // console.log(`Product recibido ${order}`);
   return (dispatch) => {
     dispatch(toggleOrdersLoading());
-    //console.log(`${endpoints.posts}${post.id}`);
+    // console.log(`${endpoints.posts}${post.id}`);
     return fetch(`${endpoints.orders}/${order.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -53,13 +53,12 @@ export function editOrder(order) {
   };
 }
 
-
 export function deleteOrder(id) {
   // console.log('actions');
   return (dispatch) => {
     dispatch(toggleOrdersLoading());
   //  console.log(`${endpoints.posts}/${id}`);
-    return fetch(`${endpoints.posts}/${id}`, {
+    return fetch(`${endpoints.oredrs}/${id}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
     })
