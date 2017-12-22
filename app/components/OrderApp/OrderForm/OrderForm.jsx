@@ -28,7 +28,10 @@ class OrderForm extends Component {
     productItemComponents: [],
   };
 
-  componentWillMount() {
+  componentWillReceiveProps(nextProps) {
+    const { order } = nextProps;
+    this.setState({ orderState: order || OrderForm.orderState() });
+    // this.setState({ orderState: nextProps.order || orderForm.orderState() }),
     const { products } = this.props;
     const productItemComponents = products.map(item => (
       <ItemProductForm
@@ -39,12 +42,6 @@ class OrderForm extends Component {
       />
     ));
     this.setState({ productItemComponents });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { order } = nextProps;
-    this.setState({ orderState: order || OrderForm.orderState() });
-    // this.setState({ orderState: nextProps.order || orderForm.orderState() }),
   }
 
   onNameConsumerChange = (value) => {
@@ -83,6 +80,7 @@ class OrderForm extends Component {
   };
 
   render() {
+    console.log();
     const { active, closeForm, order } = this.props;
 
     const actions = [
@@ -109,7 +107,7 @@ class OrderForm extends Component {
           {this.state.productItemComponents}
           <h1
             onChange={this.onTotalOrderChange}
-          >{this.state.orderState.totalOrder}</h1>
+          >{this.state.orderState.get('totalOrder')}</h1>
         </Dialog>
       </div>
     );

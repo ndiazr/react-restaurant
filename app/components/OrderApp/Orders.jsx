@@ -29,6 +29,7 @@ class Orders extends Component {
     const { fetchOrders, fetchProducts } = this.props;
     await fetchOrders();
     await fetchProducts();
+    console.log(this.props.productsData);
   }
 
   componentWillReceiveProps(nextProps) {

@@ -9,7 +9,7 @@ const Home = () =>
       <Nav />
       <h1>Restaurante ReactJS</h1>
       <img src="../../../assets/img/food.jpg" />
-      <h5>Este es el parrafo</h5>
+      <h5>Bienvenidos al Restaurante ReactJS</h5>
       <Footer />
     </div>
   );

@@ -40,6 +40,10 @@ class ItemProductForm extends Component {
   }
 
   render() {
+    const { cantProduct } = this.state;
+    const { valUnit } = this.props;
+    const totalProduct = cantProduct * valUnit;
+
     return (
       <div className={styleItem.row}>
         <div className={styleItem.column}>
@@ -48,7 +52,7 @@ class ItemProductForm extends Component {
         <div className={styleItem.column}>
           <Button
             id="substract"
-            icon="delete"
+            icon="remove" floating accent mini
             onClick={this.handleChangeItem}
           />
         </div>
@@ -63,7 +67,7 @@ class ItemProductForm extends Component {
           />
         </div>
         <div className={styleItem.column}>
-          <h2>{this.state.totalProduct}</h2>
+          <h2>{ totalProduct }</h2>
         </div>
       </div>
     );
